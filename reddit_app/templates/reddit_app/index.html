@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+</head>
+
+<body>
+    <h1>Posts</h1>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <form action="{% url 'reddit_app:change_status'%}" method="POST">
+                {% csrf_token %}
+                <h1>{{ post.title }}</h1>
+                <p>{{ post.text }}</p>
+                <input type="text" name="title_update" placeholder="Update title">
+                <input type="text" name="text_update" placeholder="Update text">
+                <button>Update</button>
+                <button formaction="{% url 'reddit_app:delete_post' %}">Delete post</button>
+                <input type="hidden" name="pk" value="{{ post.pk }}">
+                <hr />
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <hr />
+    <form action="." method="POST">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Insert your post title">
+        <input type="text" name="text" placeholder="Insert your post desc">
+        <button>Create a post</button>
+    </form>
+
+</body>
+
+</html>
