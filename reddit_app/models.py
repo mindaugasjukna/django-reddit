@@ -5,7 +5,7 @@ from secrets import token_urlsafe
 
 
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
     text = models.CharField(max_length=200)
     created_post_date = models.DateTimeField(default=timezone.now)

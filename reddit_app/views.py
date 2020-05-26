@@ -16,9 +16,9 @@ def index(request):
         post.text = text
         post.save()
 
-    todos = Todo.objects.filter(user=request.user)
+    posts = Post.objects.filter(user=request.user)
     context = {
-        'todos': todos,
+        'posts': posts,
         'user': request.user
     }
 

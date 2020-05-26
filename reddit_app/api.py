@@ -1,5 +1,3 @@
-# todo_project/todo_app/api.py
-
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from .models import Post
@@ -12,7 +10,7 @@ class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
 
     def get_queryset(self):
-        queryset = Todo.objects.filter(user=self.request.user)
+        queryset = Post.objects.filter(user=self.request.user)
         return queryset
 
 
