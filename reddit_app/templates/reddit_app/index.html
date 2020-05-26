@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+   <link rel="stylesheet" type="text/css" href="{% static 'reddit_app/reddit_app.css' %}" media="screen"/>
     <title>Post</title>
 </head>
 
 <body>
     <h1>Posts</h1>
+    <p>Welcome {{ user }} - <a href="{% url 'user_app:logout' %}">Log out</a> - <a href="{% url 'user_app:delete_account' %}">Delete Account</a></p>
     <ul>
         {% for post in posts %}
         <li>
