@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -15,9 +16,10 @@ def index(request):
         post.text = text
         post.save()
 
-    posts = Post.objects.all()
+    todos = Todo.objects.filter(user=request.user)
     context = {
-        'posts': posts
+        'todos': todos,
+        'user': request.user
     }
 
     return render(request, 'reddit_app/index.html', context)

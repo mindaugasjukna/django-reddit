@@ -1,3 +1,7 @@
 venv/
 .vscode/
 node_modules/
+pyenv.cfg
+Lib/
+Include/
+Scripts/
